@@ -1,0 +1,19 @@
+# fast focus sapce 
+cmd - h : yabai -m space --focus prev
+cmd - l : yabai -m space --focus next
+
+# fast focus desktop
+alt - tab : yabai -m display --focus recent
+
+# focus window
+# alt - h : yabai -m window --focus west
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
+# alt - l : yabai -m window --focus east
+cmd - tab : yabai -m window --focus next || yabai -m window --focus first
+
+# Swap windows
+alt - h : yabai -m window --swap west
+alt - j : yabai -m window --swap south
+alt - k : yabai -m window --swap north
+alt - l : yabai -m window --swap east
