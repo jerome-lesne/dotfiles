@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# mission-control desktop labels
+yabai -m space 1 --label messages
+yabai -m space 2 --label notes
+yabai -m space 3 --label code
+yabai -m space 4 --label web
+yabai -m space 5 --label misc
+yabai -m space 6 --label games
+
+##################
+# TILING OPTIONS #
+##################
+
+yabai -m config window_opacity              on
+yabai -m config active_window_opacity       1.0
+yabai -m config normal_window_opacity       0.85
+yabai -m config window_border_width         6
+yabai -m config window_border               on
+yabai -m config active_window_border_color  0xff775759
+yabai -m config normal_window_border_color  0x00010101
+yabai -m config insert_feedback_color       0xE02d74da
+yabai -m config window_border_hidpi         off
+yabai -m config window_border_radius        10
+yabai -m config window_animation_duration   0.15
+#yabai -m window --toggle border
+
+#Bar
+yabai -m config external_bar               all:35:0 
+
+# Layout tiled (bsp, managed), float windows (float)
+yabai -m config layout bsp
+
+# Padding
+yabai -m config top_padding    10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10
+
+#################
+# MOUSE SUPPORT #
+#################
+
+# set mouse interaction modifier key (default: fn)
+#yabai -m config mouse_modifier cmd
+
+# set modifier + left-click drag to move window (default: move)
+#yabai -m config mouse_action1 move
+
+# set modifier + right-click drag to resize window (default: resize)
+#yabai -m config mouse_action2 resize
+
+########################
+# WINDOW MODIFICATIONS #
+########################
+
+# floating windows are always on top (default: off)
+yabai -m config window_topmost on
+
+# modify window shadows (default: on, options: on, off, float)
+# example: show shadows only for floating windows
+yabai -m config window_shadow float
+
+# Windows rules
+yabai -m rule --add app="^Alacritty$" space=Code
+yabai -m rule --add app="^Réglages Système$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Firefox Developer Edition$" opacity=1.0
+yabai -m rule --add app="^Firefox$" opacity=1.0
+yabai -m rule --add app="^Finder$" opacity=1.0
+yabai -m rule --add app="^Google Chrome$" opacity=1.0
+
