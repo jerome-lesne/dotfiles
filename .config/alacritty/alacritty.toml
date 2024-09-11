@@ -322,6 +322,8 @@ mods = "Shift"
 decorations = "buttonless"
 dynamic_padding = true
 opacity = 0.85
+option_as_alt = "OnlyLeft"
+# blur = true
 startup_mode = "Windowed"
 
 [window.padding]

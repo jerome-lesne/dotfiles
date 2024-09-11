@@ -24,6 +24,9 @@ return {
             { "L3MON4D3/LuaSnip" },
             { "hrsh7th/cmp-buffer" },
             { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lua" },
+            { "onsails/lspkind.nvim" },
             { "saadparwaiz1/cmp_luasnip" },
             { "rafamadriz/friendly-snippets" },
         },
@@ -31,6 +34,13 @@ return {
             -- Here is where you configure the autocompletion settings.
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_cmp()
+
+            require('lspconfig').phpactor.setup {
+                init_options = {
+                    ["language_server_phpstan.enabled"] = false,
+                    ["language_server_psalm.enabled"] = false,
+                }
+            }
 
             -- And you can configure cmp even more, if you want to.
             local cmp = require("cmp")
@@ -47,6 +57,7 @@ return {
                 info = "»",
             })
 
+            local lspkind = require('lspkind')
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -56,18 +67,32 @@ return {
                 formatting = {
                     lsp_zero.cmp_format(),
                     fields = { "abbr", "menu", "kind" },
-                    format = function(entry, item)
-                        local menu_icon = {
-                            nvim_lsp = "λ",
-                            luasnip = "⋗",
-                            buffer = "Ω",
-                            path = "",
-                            nvim_lua = "Π",
-                        }
+                    -- format = function(entry, item)
+                    --     local menu_icon = {
+                    --         nvim_lsp = "λ",
+                    --         luasnip = "⋗",
+                    --         buffer = "Ω",
+                    --         path = "",
+                    --         nvim_lua = "Π",
+                    --     }
+                    --
+                    --     item.menu = menu_icon[entry.source.name]
+                    --     return item
+                    -- end,
+                    format = lspkind.cmp_format({
+                        -- mode = 'symbol', -- show only symbol annotations
+                        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                        -- can also be a function to dynamically calculate max width such as
+                        -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+                        ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                        show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
-                        item.menu = menu_icon[entry.source.name]
-                        return item
-                    end,
+                        -- The function below will be called before any actual modifications from lspkind
+                        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+                        before = function(entry, vim_item)
+                            return vim_item
+                        end
+                    })
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -79,8 +104,9 @@ return {
                     ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
                 }),
                 sources = {
-                    { name = "path" },
+                    -- { name = "path" },
                     { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
                     { name = "luasnip" },
                     { name = "buffer" },
                 },
@@ -112,6 +138,13 @@ return {
                 lsp_zero.default_keymaps({ buffer = bufnr })
             end)
 
+            require("lspconfig").html.setup({
+                filetypes = { "html", "templ", "hbs", "handlebars", "twig" }
+            })
+            require("lspconfig").htmx.setup({
+                filetypes = { "html", "templ", "hbs", "handlebars", "twig" }
+            })
+
             require("mason-lspconfig").setup({
                 ensure_installed = {},
                 handlers = {
@@ -124,6 +157,7 @@ return {
                 },
             })
         end,
+
     },
     {
         "nvimtools/none-ls.nvim",
@@ -168,6 +202,8 @@ return {
                     null_ls.builtins.formatting.prettierd.with({ extra_args = { "--tab-width=4" } }),
                     null_ls.builtins.formatting.stylua.with({ extra_args = { "--indent_type=Spaces" } }),
                     null_ls.builtins.code_actions.eslint_d,
+                    null_ls.builtins.diagnostics.phpcs.with({ extra_args = { "--config-set show_warnings 0" } }),
+                    null_ls.builtins.formatting.phpcsfixer,
                 },
             })
         end,

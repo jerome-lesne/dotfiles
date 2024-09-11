@@ -69,6 +69,7 @@ yabai -m config window_shadow float
 yabai -m rule --add app="^Alacritty$" space=Code
 yabai -m rule --add app="^Réglages Système$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^AlDente$" manage=off
 yabai -m rule --add app="^Firefox Developer Edition$" opacity=1.0
 yabai -m rule --add app="^Firefox$" opacity=1.0
 yabai -m rule --add app="^Finder$" opacity=1.0

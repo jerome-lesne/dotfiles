@@ -17,5 +17,9 @@ vim.cmd [[
     hi! NormalNC ctermbg=NONE guibg=NONE
     hi! TelescopeNormal ctermbg=NONE guibg=NONE
     hi! TelescopeBorder ctermbg=NONE guibg=NONE
-    highlight Search guibg='Purple' guifg='NONE'
+    hi! TelescopePromptBorder ctermbg=NONE guibg=NONE
+    hi! TelescopePromptTitle ctermbg=NONE guibg=NONE
+    hi! Pmenu ctermbg=NONE guibg=NONE
+    hi! FloatBorder ctermbg=NONE guibg=NONE
+    hi! Search guibg='NONE' guifg='NONE'
 ]]

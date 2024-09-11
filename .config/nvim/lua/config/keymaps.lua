@@ -34,7 +34,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Buffers navigation
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>q", ":bdelete<CR>", opts)
+-- keymap("n", "<leader>q", ":bdelete<CR>", opts)
 
 -- Open File explorer
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
