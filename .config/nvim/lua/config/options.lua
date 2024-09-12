@@ -28,4 +28,5 @@ opt.smartcase = true                                    -- smart search regardin
 opt.clipboard:append('unnamedplus')                     -- allow copy/paste inside/outside vim
 opt.hlsearch = true                                     -- hilight search pemanently (see remap :noh on esc to exit it)
 opt.showtabline = 0                                     -- remove tabline
+opt.showmode = false                                    -- remove showing mode as it is already in lualine
 opt.pumblend = 0                                        -- Transparent floating windows
