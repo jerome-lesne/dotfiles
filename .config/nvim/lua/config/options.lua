@@ -33,6 +33,7 @@ opt.hlsearch = true                                     -- hilight search pemane
 opt.showtabline = 0                                     -- remove tabline
 opt.showmode = true                                     -- show mode
 opt.pumblend = 0                                        -- transparent floating windows
+opt.virtualedit = "block"                               -- allow expand selection to a non character area
 
 -- Netrw Config
 
