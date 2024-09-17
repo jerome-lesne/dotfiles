@@ -18,6 +18,15 @@ local config = function()
         --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
         --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
         --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = "<Leader>s", -- set to `false` to disable one of the mappings
+                node_incremental = "i",
+                scope_incremental = "<Leader>sc",
+                node_decremental = "d",
+            },
+        },
     })
 end
 
