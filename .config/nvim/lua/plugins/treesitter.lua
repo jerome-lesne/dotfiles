@@ -22,9 +22,9 @@ local config = function()
             enable = true,
             keymaps = {
                 init_selection = "<Leader>s", -- set to `false` to disable one of the mappings
-                node_incremental = "i",
-                scope_incremental = "<Leader>sc",
-                node_decremental = "d",
+                node_incremental = "s",
+                scope_incremental = "sc",
+                node_decremental = "sd",
             },
         },
     })
