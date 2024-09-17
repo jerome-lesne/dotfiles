@@ -1,6 +1,6 @@
-vim.cmd("let $LANG='en_US.UTF-8'")                      -- change language to english
+vim.cmd("let $LANG='en_US.UTF-8'") -- change language to english
 
-local opt = vim.opt                                     
+local opt = vim.opt
 local keymap = vim.api.nvim_set_keymap
 
 opt.clipboard = "unnamedplus"                           -- allows nvim to acces sys clipboard
@@ -31,18 +31,17 @@ opt.smartcase = true                                    -- smart search regardin
 opt.clipboard:append('unnamedplus')                     -- allow copy/paste inside/outside vim
 opt.hlsearch = true                                     -- hilight search pemanently (see remap :noh on esc to exit it)
 opt.showtabline = 0                                     -- remove tabline
-opt.showmode = true                                     -- show mode
+opt.showmode = false                                    -- show mode
 opt.pumblend = 0                                        -- transparent floating windows
 opt.virtualedit = "block"                               -- allow expand selection to a non character area
 
 -- Netrw Config
 
-vim.g.netrw_banner = 0                                  -- disable netwr banner
-vim.g.netrw_winsize = 25                                -- winsize of netwr
-vim.g.netrw_liststyle = 3                               -- tree style
+vim.g.netrw_banner = 0    -- disable netwr banner
+vim.g.netrw_winsize = 25  -- winsize of netwr
+vim.g.netrw_liststyle = 3 -- tree style
 
 -- Make everything transparent
-
 vim.cmd [[
     hi! Normal guibg=NONE ctermbg=NONE
     hi! NonText ctermbg=NONE guibg=NONE
@@ -66,90 +65,9 @@ vim.cmd [[
     hi! Search guibg='NONE' guifg='NONE'
 ]]
 
--- STATUS-LINE
-
--- Table that maps file types to Nerd Font icons
-local filetype_icons = {
-    python = '',     -- Python
-    javascript = '', -- JavaScript
-    typescript = '', -- TypeScript
-    html = '',       -- HTML
-    css = '',        -- CSS
-    scss = '',       -- SCSS
-    lua = '',        -- Lua
-    c = '',          -- C
-    cpp = '',        -- C++
-    java = '',       -- Java
-    ruby = '',       -- Ruby
-    php = '',        -- PHP
-    go = '',         -- Go
-    rust = '',       -- Rust
-    shell = '',      -- Shell script
-    vim = '',        -- Vim
-    markdown = '',   -- Markdown
-    json = '',       -- JSON
-    yaml = '',       -- YAML
-    xml = '󰗀',        -- XML
-    dockerfile = '', -- Dockerfile
-    gitcommit = '',  -- Git commit
-    gitconfig = '',  -- Git config
-    gitignore = '',  -- Git ignore
-    sql = '',        -- SQL
-    perl = '',       -- Perl
-    r = '󰟔',          -- R
-    haskell = '',    -- Haskell
-    kotlin = '',     -- Kotlin
-    scala = '',      -- Scala
-    swift = '',      -- Swift
-    dart = '',       -- Dart
-    elm = '',        -- Elm
-    erlang = '',     -- Erlang
-    elixir = '',     -- Elixir
-    clojure = '',    -- Clojure
-    graphql = '',    -- GraphQL
-    vue = '',        -- Vue
-    svelte = '',     -- Svelte
-    nginx = '',      -- Nginx
-    bash = '',       -- Bash
-    zsh = '',        -- Zsh
-    powershell = '', -- PowerShell
-    tex = 'ﭨ',        -- TeX
-    vuejs = '󰡄',      -- Vue.js
-    angular = '',    -- Angular
-    react = '󰜈',      -- React
-    default = '',    -- Default (any other file type)
-}
-
--- Function to get the icon based on the file type
-function GetFileTypeIcon()
-    local filetype = vim.bo.filetype
-    return filetype_icons[filetype] or filetype_icons['default']
-end
-
--- Function to get the percentage through the document with fixed width
-function FormatPercentage()
-    local percentage = string.format("%3d%%", vim.fn.line('.') / vim.fn.line('$') * 100)
-    return percentage
-end
-
--- Function to get the line/column information with fixed width
-function FormatLineCol()
-    return string.format("%4d :%3d", vim.fn.line('.'), vim.fn.col('.'))
-end
-
--- Set the status line with fixed-width formatting
-vim.o.statusline = 
-    " %{expand('%:.')} " ..
-    "%=┃ " ..
-    "%{v:lua.GetFileTypeIcon()} %y " ..
-    "┃" ..
-    " %{v:lua.FormatPercentage()} " ..
-    "┃" ..
-    "%{v:lua.FormatLineCol()}"
-
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
