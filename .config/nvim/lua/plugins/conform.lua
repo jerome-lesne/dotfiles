@@ -1,18 +1,5 @@
-return { -- Autoformat
-    'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    keys = {
-        {
-            '<leader>fo',
-            function()
-                require('conform').format { async = true, lsp_format = 'fallback' }
-            end,
-            mode = '',
-            desc = '[F]ormat buffer',
-        },
-    },
-    opts = {
+local config = function()
+    require("conform").setup({
         notify_on_error = false,
         format_on_save = function(bufnr)
             -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -34,7 +21,29 @@ return { -- Autoformat
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             -- 'stop_after_first' to run the first available formatter from the list
-            -- javascript = { "prettierd", "prettier", stop_after_first = true },
+            javascript = { "prettierd" },
+        },
+        formatters = {
+            prettierd = {
+                prepend_args = { "--tab-width=4" }
+            }
+        }
+    })
+end
+
+return { -- Autoformat
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+        {
+            '<leader>fo',
+            function()
+                require('conform').format { async = true, lsp_format = 'fallback' }
+            end,
+            mode = '',
+            desc = '[Fo]rmat buffer',
         },
     },
+    config = config
 }
