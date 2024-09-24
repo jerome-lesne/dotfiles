@@ -1,6 +1,21 @@
 local config = function()
     local telescope = require("telescope")
     telescope.setup({
+        defaults = {
+            -- This makes Telescope respect .gitignore
+            file_ignore_patterns = { ".git/", "node_modules/", "%.lock" },
+            vimgrep_arguments = {
+                'rg',
+                '--color=never',
+                '--no-heading',
+                '--with-filename',
+                '--line-number',
+                '--column',
+                '--smart-case',
+                '--ignore-file',
+                '.gitignore' -- Ignore based on .gitignore
+            },
+        },
         extensions = {
             ['ui-select'] = {
                 require('telescope.themes').get_dropdown(),
@@ -24,14 +39,14 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         {
-              'nvim-telescope/telescope-fzf-native.nvim',
-              build = 'make',
-              cond = function()
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make',
+            cond = function()
                 return vim.fn.executable 'make' == 1
-              end,
+            end,
         },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font }
+        { 'nvim-telescope/telescope-ui-select.nvim' },
+        { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font }
     },
     config = config
 }
