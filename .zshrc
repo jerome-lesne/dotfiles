@@ -113,6 +113,7 @@ alias tst="echo "test""
 alias vim="nvim"
 alias live="live-server . --browser='Google Chrome'"
 alias dotfiles='/usr/bin/git --git-dir=/Users/jerome/.dotfiles/ --work-tree=/Users/jerome'
+alias ls="lsd"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
