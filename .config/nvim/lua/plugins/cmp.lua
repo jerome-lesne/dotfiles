@@ -5,6 +5,8 @@ local config = function()
     local lspkind = require('lspkind')
 
     luasnip.config.setup {}
+    -- Link twig to html so that HTML snippets are available in twig files
+    luasnip.filetype_extend("twig", { "html" })
 
     cmp.setup {
         snippet = {

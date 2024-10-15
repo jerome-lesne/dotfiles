@@ -21,7 +21,9 @@ local config = function()
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },
             -- 'stop_after_first' to run the first available formatter from the list
+            twig = { "twig-cs-fixer" },
             javascript = { "prettierd" },
+            html = { "prettierd" },
             javascriptreact = { "prettierd" },
             markdown = { "prettierd" }
         },

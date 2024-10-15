@@ -81,6 +81,9 @@ local config = function()
     --  For example, to see the options for `lua_ls`, go to: https://luals.github.io/wiki/settings/
     -- `:help lspconfig-all` for a list of all the pre-configured LSPs
     local servers = {
+        html = {
+            filetypes = { "html", "templ", "twig" }
+        }
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},

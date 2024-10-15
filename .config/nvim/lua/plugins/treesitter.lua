@@ -22,12 +22,14 @@ local config = function()
             enable = true,
             keymaps = {
                 init_selection = "<Leader>s", -- set to `false` to disable one of the mappings
-                node_incremental = "s",
+                node_incremental = "si",
                 scope_incremental = "sc",
                 node_decremental = "sd",
             },
         },
     })
+    -- Use another parser for certain filetype for example html parser for twig files:
+    -- vim.treesitter.language.register("html", "twig")
 end
 
 return { -- Highlight, edit, and navigate code
