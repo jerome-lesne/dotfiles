@@ -66,6 +66,11 @@ vim.cmd [[
     hi! PmenuThumb guibg=NONE ctermbg=NONE
     hi! FloatBorder ctermbg=NONE guibg=NONE
     hi! Search guibg=NONE guifg=NONE
+    hi! Title guibg=NONE ctermbg=NONE
+    hi! WinBar guibg=NONE ctermbg=NONE
+    hi! TabLine guibg=NONE ctermbg=NONE
+    hi! TabLineFill guibg=NONE ctermbg=NONE
+    hi! TabLineSel guibg=NONE ctermbg=NONE
 
     " Plugin-specific transparency settings
     hi! NvimTreeNormal ctermbg=NONE guibg=NONE
@@ -87,7 +92,6 @@ vim.cmd [[
     hi! DiagnosticVirtualTextWarn guibg=NONE
     hi! DiagnosticVirtualTextInfo guibg=NONE
     hi! DiagnosticVirtualTextHint guibg=NONE
-
 ]]
 
 -- Harpoon transparency

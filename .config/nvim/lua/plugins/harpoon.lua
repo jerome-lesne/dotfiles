@@ -10,6 +10,7 @@ local config = function()
     vim.keymap.set("n", "<leader>é", function() harpoon:list():select(2) end)
     vim.keymap.set("n", '<leader>"', function() harpoon:list():select(3) end)
     vim.keymap.set("n", "<leader>'", function() harpoon:list():select(4) end)
+    vim.keymap.set("n", "<leader>(", function() harpoon:list():select(4) end)
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<C-k>", function() harpoon:list():prev() end)
