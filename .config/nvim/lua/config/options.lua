@@ -43,27 +43,60 @@ vim.g.netrw_liststyle = 3 -- tree style
 
 -- Make everything transparent
 vim.cmd [[
+    " Make general UI transparent
     hi! Normal guibg=NONE ctermbg=NONE
+    hi! NormalNC guibg=NONE ctermbg=NONE
     hi! NonText ctermbg=NONE guibg=NONE
     hi! LineNr ctermbg=NONE guibg=NONE
     hi! SignColumn ctermbg=NONE guibg=NONE
     hi! VertSplit ctermbg=NONE guibg=NONE
     hi! EndOfBuffer ctermbg=NONE guibg=NONE
     hi! CursorColumn ctermbg=NONE guibg=NONE
+    hi! ColorColumn ctermbg=NONE guibg=NONE
+    hi! Folded guibg=NONE ctermbg=NONE
+    hi! FoldColumn guibg=NONE ctermbg=NONE
+    hi! CursorLine guibg=NONE ctermbg=NONE
+    hi! CursorLineNr guibg=NONE ctermbg=NONE
+    hi! StatusLine guibg=NONE ctermbg=NONE
+    hi! StatusLineNC guibg=NONE ctermbg=NONE
+    hi! MsgArea guibg=NONE ctermbg=NONE
+    hi! Pmenu guibg=NONE ctermbg=NONE
+    hi! PmenuSbar guibg=NONE ctermbg=NONE
+    hi! PmenuSel guibg=NONE ctermbg=NONE
+    hi! PmenuThumb guibg=NONE ctermbg=NONE
+    hi! FloatBorder ctermbg=NONE guibg=NONE
+    hi! Search guibg=NONE guifg=NONE
+
+    " Plugin-specific transparency settings
     hi! NvimTreeNormal ctermbg=NONE guibg=NONE
     hi! NvimTreeNormalNC ctermbg=NONE guibg=NONE
     hi! NvimTreeVertSplit ctermbg=NONE guibg=NONE
     hi! NvimTreeEndOfBuffer ctermbg=NONE guibg=NONE
     hi! NvimTreeCursorColumn ctermbg=NONE guibg=NONE
-    hi! NormalNC ctermbg=NONE guibg=NONE
+
+    " Telescope transparency
     hi! TelescopeNormal ctermbg=NONE guibg=NONE
     hi! TelescopeBorder ctermbg=NONE guibg=NONE
     hi! TelescopePromptBorder ctermbg=NONE guibg=NONE
     hi! TelescopePromptTitle ctermbg=NONE guibg=NONE
-    hi! Pmenu ctermbg=NONE guibg=NONE
-    hi! FloatBorder ctermbg=NONE guibg=NONE
-    hi! Search guibg='NONE' guifg='NONE'
+    hi! TelescopePreviewTitle ctermbg=NONE guibg=NONE
+    hi! TelescopeResultsTitle ctermbg=NONE guibg=NONE
+
+    " Diagnostic and LSP transparency
+    hi! DiagnosticVirtualTextError guibg=NONE
+    hi! DiagnosticVirtualTextWarn guibg=NONE
+    hi! DiagnosticVirtualTextInfo guibg=NONE
+    hi! DiagnosticVirtualTextHint guibg=NONE
+
 ]]
+
+-- Harpoon transparency
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "harpoon",
+    callback = function()
+        vim.cmd("setlocal winhighlight=Normal:Normal")
+    end,
+})
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
