@@ -68,7 +68,7 @@ outer.right =      5
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 # cmd-h = [] # Disable "hide application"
-cmd-alt-h = [] # Disable "hide others"
+# cmd-alt-h = [] # Disable "hide others"
 
 # All possible keys:
 # - Letters.        a, b, c, ..., z
@@ -99,20 +99,24 @@ cmd-slash = 'layout tiles horizontal vertical'
 cmd-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-h = 'focus left'
-cmd-j = 'focus down'
-cmd-k = 'focus up'
-cmd-l = 'focus right'
+cmd-shift-h = 'focus left'
+cmd-shift-j = 'focus down'
+cmd-shift-k = 'focus up'
+cmd-shift-l = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-shift-h = 'move left'
-cmd-shift-j = 'move down'
-cmd-shift-k = 'move up'
-cmd-shift-l = 'move right'
+cmd-alt-h = 'move left'
+cmd-alt-j = 'move down'
+cmd-alt-k = 'move up'
+cmd-alt-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 cmd-minus = 'resize width -50'
 cmd-equal = 'resize width +50'
+
+# move next / previous workspace
+cmd-h = 'workspace prev'  # Go to the previous workspace
+cmd-l = 'workspace next'  # Go to the next workspace
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 cmd-1 = 'workspace 1'
