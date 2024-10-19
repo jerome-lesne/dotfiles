@@ -28,9 +28,16 @@ local config = function()
             markdown = { "prettierd" }
         },
         formatters = {
+            -- Add arguments to set parser and tab width for twig files
             prettierd = {
-                prepend_args = { "--tab-width=4" }
-            }
+                prepend_args = function(_, _, filetype)
+                    if filetype == "twig" then
+                        return { "--parser", "html", "--tab-width", "4" }
+                    else
+                        return { "--tab-width", "4" }
+                    end
+                end
+            },
         }
     })
 end
