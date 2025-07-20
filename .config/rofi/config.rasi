@@ -1,0 +1,21 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ drun, run ];
+}
+
+@theme "arthur"
+
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 10px;
+}
+
+element-icon {
+    size: 2.5em;
+}
+
+element-text {
+    vertical-align: 0.5;
+    font: "FiraCode Nerd Font Mono Bold 14";
+}
