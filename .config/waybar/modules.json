@@ -99,7 +99,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<big>{icon}</big>{capacity}%",
+        "format": "<big>{icon}</big> {capacity}%",
         "format-charging": "<big>󰂄</big> {capacity}%",
         "format-plugged": "<big></big> {capacity}%",
         "format-alt": "{icon} {time}",
