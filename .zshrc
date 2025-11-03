@@ -56,6 +56,21 @@ alias vim="nvim"
 alias ls="lsd"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+fcd() {
+  fd -H --type d --max-depth 1 --exclude .git \
+  | fzf --preview 'tree -L 1 --dirsfirst -C {} | head -100' \
+        --bind 'start:unbind(j)+unbind(k)+unbind(i)+change-prompt([🟢 INSERT]: )' \
+        --bind 'j:down,k:up' \
+        --bind 'i:unbind(j)+unbind(k)+unbind(i)+change-prompt([🟢 INSERT]: )' \
+        --bind 'esc:transform:case "$FZF_PROMPT" in \
+"*NORMAL*" ) echo abort;; \
+* ) echo "change-prompt([🔵 NORMAL]: )+rebind(j)+rebind(k)+rebind(i)";; \
+esac' \
+  | while read -r dir; do
+      [[ -n "$dir" ]] && cd "$dir" && break
+    done
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
