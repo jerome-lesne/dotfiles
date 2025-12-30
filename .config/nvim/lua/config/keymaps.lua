@@ -31,6 +31,3 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Esc hlsearch
 keymap("n", "<esc>", ":noh<cr>", opts)
-
--- Open File explorer
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
