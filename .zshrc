@@ -77,3 +77,7 @@ esac' \
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Env variable
+export EDITOR="nvim"
+export VISUAL="nvim"
