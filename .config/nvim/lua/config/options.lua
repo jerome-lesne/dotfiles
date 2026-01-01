@@ -96,3 +96,9 @@ vim.cmd [[
 
 ]]
 
+-- Make all html file take htmlangular filetype for TS parsing
+vim.filetype.add({
+  extension = {
+    html = "htmlangular",
+  },
+})

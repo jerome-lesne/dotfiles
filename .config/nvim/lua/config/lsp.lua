@@ -2,12 +2,16 @@ vim.lsp.enable({
     "html",
     "lua_ls",
     "vtsls",
-    "angular_ls"
+    "angularls"
 })
 
 vim.diagnostic.config({
-    virtual_lines = true,
-    virtual_text = true,
+    virtual_lines = {
+        severity = {
+          min = vim.diagnostic.severity.WARN,
+        },
+    },
+    virtual_text = false,
     underline = true,
     update_in_insert = false,
     severity_sort = true,
@@ -15,4 +19,10 @@ vim.diagnostic.config({
         border = "rounded",
         source = true
     }
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end,
 })
