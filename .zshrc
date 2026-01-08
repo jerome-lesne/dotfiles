@@ -12,18 +12,55 @@ fi
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# FZF Custom
+export FZF_DEFAULT_OPTS='
+  --layout=reverse
+  --prompt="[🟢 INSERT] > "
+  --bind "start:unbind(j)+unbind(k)+unbind(i)"
+  --bind "esc:transform:
+    case \"$FZF_PROMPT\" in
+      *NORMAL*) echo abort ;;
+      *) echo \"change-prompt([🔵 NORMAL] > )+rebind(j)+rebind(k)+rebind(i)\" ;;
+    esac"
+  --bind "i:unbind(j)+unbind(k)+unbind(i)+change-prompt([🟢 INSERT] > )"
+  --bind "j:down"
+  --bind "k:up"'
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# Multiline prompt
+PROMPT='%F{green}%n@%m%f %1~ %#%B
+%F{blue}➜%f '
+
+# Completion menu below typing
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' scroll-output 1
+
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+#
+# git clone https://github.com/zsh-users/zsh-autosuggestions \
+#   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+#
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+#   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
+
+# Kb from fzf
+source /usr/share/fzf/key-bindings.zsh
 
 # Terminal vim mode
 bindkey -v
