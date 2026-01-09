@@ -12,6 +12,9 @@ fi
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Terminal vim mode
+bindkey -v
+
 # FZF Custom
 export FZF_DEFAULT_OPTS='
   --layout=reverse
@@ -45,48 +48,34 @@ zstyle ':completion:*' scroll-output 1
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #
+# INSTALLED PLUGINS :
 # git clone https://github.com/zsh-users/zsh-autosuggestions \
 #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 #
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting \
 #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+#
+# git clone https://github.com/jeffreytse/zsh-vi-mode \
+#   $ZSH_CUSTOM/plugins/zsh-vi-mode
 
 plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-vi-mode
 )
+
+
+# Clipboard integ for zsh-vi-mode plugin
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 source $ZSH/oh-my-zsh.sh
 
 # Kb from fzf
 source /usr/share/fzf/key-bindings.zsh
 
-# Terminal vim mode
-bindkey -v
-
 # Set correct TERM
 export TERM="xterm-256color"
-
-# Cursor shape change: beam (5) for insert, block (1) for normal
-function zle-keymap-select {
-  case $KEYMAP in
-    vicmd) printf '\e[2 q' ;;  # block
-    main|viins) printf '\e[6 q' ;; # beam
-  esac
-}
-zle -N zle-keymap-select
-
-function zle-line-init {
-  printf '\e[6 q'  # beam at start
-}
-zle -N zle-line-init
-
-# Fix prompt redraw issue
-export ZLE_RPROMPT_INDENT=0
-
-# Improve delay
-KEYTIMEOUT=1
 
 # ALIAS
 alias vim="nvim"
