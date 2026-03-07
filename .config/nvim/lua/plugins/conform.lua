@@ -6,6 +6,7 @@ local config = function()
 			javascriptreact = { "prettierd" },
 			typescript = { "prettierd" },
 			typescriptreact = { "prettierd" },
+			json = { "prettierd" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
