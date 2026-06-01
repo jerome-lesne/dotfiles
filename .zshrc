@@ -7,7 +7,14 @@ fi
 
 # Scripts path
 [[ ":$PATH:" != *":$HOME/scripts:"* ]] && export PATH="$HOME/scripts:$PATH"
+
+# Cargo binaries
+[[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]] && export PATH="$HOME/.cargo/bin:$PATH"
+
+# NVM
 [ -s /usr/share/nvm/init-nvm.sh ] && . /usr/share/nvm/init-nvm.sh
+
+# Cargo path
 
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -107,3 +114,7 @@ source <(ng completion script)
 # Env variable
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
