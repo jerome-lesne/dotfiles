@@ -175,6 +175,13 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
+hl.bind(
+	"ALT + M",
+	hl.dsp.window.fullscreen({
+		action = "toggle",
+		mode = "fullscreen",
+	})
+)
 
 -- Move focus using ALT + SHIFT + H/J/K/L.
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
